@@ -72,7 +72,7 @@ export const getNextPostBySlug = (slug) => {
   const currentPostIndex = posts.indexOf(currentPost);
 
   const post = posts[currentPostIndex - 1];
-  // no prev post found
+  // no next post found
   if (!post) return null;
 
   const nextPostSlug = post?.filePath.replace(/\.mdx?$/, '');

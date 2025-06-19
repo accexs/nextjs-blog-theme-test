@@ -7,7 +7,6 @@ import {
 } from '@/utils/mdx-utils';
 
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import Head from 'next/head';
 import Link from 'next/link';
 import ArrowIcon from '@/components/ArrowIcon';
 import CustomImage from '@/components/CustomImage';
@@ -15,7 +14,16 @@ import CustomLink from '@/components/CustomLink';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Layout, { GradientBackground } from '@/components/Layout';
-import SEO from '@/components/SEO';
+
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const globalData = getGlobalData();
+  const { data: frontMatter } = await getPostBySlug(slug);
+  return {
+    title: `${frontMatter.title} - ${globalData.name}`,
+    description: frontMatter.description,
+  };
+}
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -26,7 +34,6 @@ const components = {
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
-  Head,
   img: CustomImage,
 };
 
@@ -38,10 +45,6 @@ export default async function PostPage({ params }) {
   const nextPost = getNextPostBySlug(slug);
   return (
     <Layout>
-      <SEO
-        title={`${frontMatter.title} - ${globalData.name}`}
-        description={frontMatter.description}
-      />
       <Header name={globalData.name} />
       <article className="px-6 md:px-0" data-sb-object-id={`posts/${slug}.mdx`}>
         <header>

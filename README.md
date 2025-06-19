@@ -85,6 +85,8 @@ If setting an environment variable isn't your cup of tea, the defaults can be ch
 - `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_BODY` are used in [`utils/theme-utils.js`](utils/theme-utils.js)
 - `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`pages/index.js`](pages/index.js) & [`pages/posts/[slug].js`](pages/posts/[slug].js) through the `globalData` object.
 
+Values provided for `BLOG_THEME`, `BLOG_FONT_HEADINGS`, and `BLOG_FONT_BODY` are sanitized to allow only alphanumeric characters and hyphens. Make sure the values match one of the themes or fonts defined in [`themes.js`](themes.js) to ensure they are applied.
+
 ## Adding new posts
 
 All posts are stored in `/posts` directory. To make a new post, create a new file with the [`.mdx` extension](https://mdxjs.com/).

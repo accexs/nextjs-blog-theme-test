@@ -1,9 +1,29 @@
 const { COLOR_THEMES, FONT_THEMES } = require('../themes');
 
-const THEME = process.env.BLOG_THEME || 'default';
-const FONT_HEADINGS = process.env.BLOG_FONT_HEADINGS || 'sans-serif';
+function sanitizeEnv(value, allowedList, fallback) {
+  if (!value) return fallback;
+  const sanitized = String(value).toLowerCase().replace(/[^a-z0-9-]/gi, '');
+  return allowedList.includes(sanitized) ? sanitized : fallback;
+}
+
+const THEME = sanitizeEnv(
+  process.env.BLOG_THEME,
+  Object.keys(COLOR_THEMES),
+  'default',
+);
+
+const FONT_HEADINGS = sanitizeEnv(
+  process.env.BLOG_FONT_HEADINGS,
+  Object.keys(FONT_THEMES),
+  'sans-serif',
+);
+
 // body font family variable
-const FONT_BODY = process.env.BLOG_FONT_BODY || 'sans-serif';
+const FONT_BODY = sanitizeEnv(
+  process.env.BLOG_FONT_BODY,
+  Object.keys(FONT_THEMES),
+  'sans-serif',
+);
 
 export function generateCssVariables() {
   const cssVars = {};

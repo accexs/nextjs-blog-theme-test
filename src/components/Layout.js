@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 import styles from './Layout.module.css';

@@ -62,7 +62,7 @@ export const getPostBySlug = async (slug) => {
     scope: data,
   });
 
-  return {mdxSource, data, postFilePath};
+  return {mdxSource, data, postFilePath, content};
 };
 
 export const getNextPostBySlug = (slug) => {

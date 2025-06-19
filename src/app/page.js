@@ -1,17 +1,24 @@
 import Link from 'next/link';
-import { getPosts } from '../utils/mdx-utils';
+import { getPosts } from '@/utils/mdx-utils';
 
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import Layout, { GradientBackground } from '../components/Layout';
-import ArrowIcon from '../components/ArrowIcon';
-import { getGlobalData } from '../utils/global-data';
-import SEO from '../components/SEO';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Layout, { GradientBackground } from '@/components/Layout';
+import ArrowIcon from '@/components/ArrowIcon';
+import { getGlobalData } from '@/utils/global-data';
+export async function generateMetadata() {
+  const globalData = getGlobalData();
+  return {
+    title: globalData.name,
+    description: globalData.blogTitle,
+  };
+}
 
-export default function Index({ posts, globalData }) {
+export default function Index() {
+  const posts = getPosts();
+  const globalData = getGlobalData();
   return (
     <Layout>
-      <SEO title={globalData.name} description={globalData.blogTitle} />
       <Header name={globalData.name} />
       <main className="w-full">
         <h1 className="mb-12 text-3xl text-center lg:text-5xl">
@@ -67,9 +74,3 @@ export default function Index({ posts, globalData }) {
   );
 }
 
-export function getStaticProps() {
-  const posts = getPosts();
-  const globalData = getGlobalData();
-
-  return { props: { posts, globalData } };
-}

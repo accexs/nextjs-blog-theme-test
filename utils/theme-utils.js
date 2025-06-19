@@ -2,6 +2,7 @@ const { COLOR_THEMES, FONT_THEMES } = require('../themes');
 
 const THEME = process.env.BLOG_THEME || 'default';
 const FONT_HEADINGS = process.env.BLOG_FONT_HEADINGS || 'sans-serif';
+// body font family variable
 const FONT_BODY = process.env.BLOG_FONT_BODY || 'sans-serif';
 
 export function generateCssVariables() {

@@ -1,21 +1,21 @@
-import { getGlobalData } from '../../utils/global-data';
+import { getGlobalData } from '@/utils/global-data';
 import {
   getNextPostBySlug,
   getPostBySlug,
   getPreviousPostBySlug,
   getPostFilePaths,
-} from '../../utils/mdx-utils';
+} from '@/utils/mdx-utils';
 
-import { MDXRemote } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import Head from 'next/head';
 import Link from 'next/link';
-import ArrowIcon from '../../components/ArrowIcon';
-import CustomImage from '../../components/CustomImage';
-import CustomLink from '../../components/CustomLink';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import Layout, { GradientBackground } from '../../components/Layout';
-import SEO from '../../components/SEO';
+import ArrowIcon from '@/components/ArrowIcon';
+import CustomImage from '@/components/CustomImage';
+import CustomLink from '@/components/CustomLink';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Layout, { GradientBackground } from '@/components/Layout';
+import SEO from '@/components/SEO';
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -30,14 +30,12 @@ const components = {
   img: CustomImage,
 };
 
-export default function PostPage({
-  source,
-  frontMatter,
-  prevPost,
-  nextPost,
-  globalData,
-  slug,
-}) {
+export default async function PostPage({ params }) {
+  const { slug } = params;
+  const globalData = getGlobalData();
+  const { mdxSource, data: frontMatter } = await getPostBySlug(slug);
+  const prevPost = getPreviousPostBySlug(slug);
+  const nextPost = getNextPostBySlug(slug);
   return (
     <Layout>
       <SEO
@@ -64,7 +62,7 @@ export default function PostPage({
             className="prose dark:prose-invert"
             data-sb-field-path="markdown_content"
           >
-            <MDXRemote {...source} components={components} />
+            <MDXRemote {...mdxSource} components={components} />
           </article>
         </main>
         <div className="grid mt-12 md:grid-cols-2 lg:-mx-24">
@@ -111,33 +109,8 @@ export default function PostPage({
   );
 }
 
-export const getStaticProps = async ({ params }) => {
-  const globalData = getGlobalData();
-  const { mdxSource, data } = await getPostBySlug(params.slug);
-  const prevPost = getPreviousPostBySlug(params.slug);
-  const nextPost = getNextPostBySlug(params.slug);
-
-  return {
-    props: {
-      globalData,
-      source: mdxSource,
-      frontMatter: data,
-      slug: params.slug,
-      prevPost,
-      nextPost,
-    },
-  };
-};
-
-export const getStaticPaths = async () => {
-  const paths = getPostFilePaths()
-    // Remove file extensions for page paths
+export async function generateStaticParams() {
+  return getPostFilePaths()
     .map((path) => path.replace(/\.mdx?$/, ''))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
+    .map((slug) => ({ slug }));
+}

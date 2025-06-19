@@ -24,11 +24,10 @@ export default function Layout({ children }) {
     } else if (lightMode) {
       document.documentElement.classList.remove('dark');
     }
-    return;
   };
 
   const handleSystemThemeChange = () => {
-    var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     darkQuery.onchange = (e) => {
       if (e.matches) {

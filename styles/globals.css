@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+.prose code::before {
+  content: none;
+}
+
+.prose code::after {
+  content: none;
+}
+
 @theme static {
   --color-primary: var(--theme-primary);
   --color-gradient-1: var(--theme-gradient-1);

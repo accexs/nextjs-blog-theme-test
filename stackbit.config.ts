@@ -14,10 +14,10 @@ export default defineStackbitConfig({
                 {
                     name: "Post",
                     type: "page",
-                    urlPath: "/posts/{slug}",
+                    //urlPath: "/posts/{slug}",
                     filePath: "posts/{slug}.mdx",
                     fields: [
-                        { name: "title", type: "string", required: true, default: 'Post Title' }, 
+                        { name: "title", type: "string", required: true, default: 'Post Title' },
                         { name: "description", type: "string", default: 'Post description goes here' },
                         { name: "date", type: "date", required: true },
                     ]

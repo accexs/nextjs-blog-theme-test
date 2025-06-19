@@ -38,5 +38,16 @@
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   },
+  "overrides": {
+    "lodash.pick": "npm:lodash@^4.17.21",
+    "lodash.set": "npm:lodash@^4.17.21",
+    "@octokit/core": "^7.0.2",
+    "@octokit/graphql": "^9.0.1",
+    "@octokit/plugin-paginate-rest": "^13.1.0",
+    "@octokit/request": "^10.0.2",
+    "@octokit/request-error": "^7.0.0",
+    "@octokit/rest": "^22.0.0",
+    "esbuild": "^0.25.5"
+  },
   "license": "MIT"
 }

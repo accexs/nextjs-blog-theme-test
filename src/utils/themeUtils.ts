@@ -1,10 +1,10 @@
-const { COLOR_THEMES, FONT_THEMES } = require('../../themes');
+import {COLOR_THEMES, FONT_THEMES} from '../../themes';
 
-function sanitizeEnv(value, allowedList, fallback) {
+const sanitizeEnv = (value, allowedList, fallback) => {
   if (!value) return fallback;
   const sanitized = String(value).toLowerCase().replace(/[^a-z0-9-]/gi, '');
   return allowedList.includes(sanitized) ? sanitized : fallback;
-}
+};
 
 const THEME = sanitizeEnv(
   process.env.NEXT_PUBLIC_BLOG_THEME,
@@ -25,7 +25,7 @@ const FONT_BODY = sanitizeEnv(
   'sans-serif',
 );
 
-export function generateCssVariables() {
+export const generateCssVariables = () => {
   const cssVars = {};
   const themeColors = COLOR_THEMES[THEME]?.colors || {};
   for (const [key, value] of Object.entries(themeColors)) {
@@ -39,4 +39,4 @@ export function generateCssVariables() {
     .join('\n');
 
   return cssVarsString;
-}
+};

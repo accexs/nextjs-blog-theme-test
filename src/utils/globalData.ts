@@ -1,4 +1,10 @@
-export const getGlobalData = () => {
+export interface GlobalData {
+  name: string;
+  blogTitle: string;
+  footerText: string;
+}
+
+export const getGlobalData = (): GlobalData => {
   const name = process.env.BLOG_NAME
     ? decodeURI(process.env.BLOG_NAME)
     : 'Jay Doe';

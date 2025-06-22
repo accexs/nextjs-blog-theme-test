@@ -1,5 +1,3 @@
-import {getGlobalData} from "../../../utils/global-data";
-import {getNextPostBySlug, getPostBySlug, getPostFilePaths, getPreviousPostBySlug} from "../../../utils/mdx-utils";
 import CustomLink from "../../../components/CustomLink";
 import CustomImage from "../../../components/CustomImage";
 import {MDXRemote} from 'next-mdx-remote/rsc';
@@ -11,6 +9,8 @@ import Header from "../../../components/Header";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkGfm from "remark-gfm";
+import {getGlobalData} from "../../../utils/globalData";
+import {getNextPostBySlug, getPostBySlug, getPostFilePaths, getPreviousPostBySlug} from "../../../utils/mdxUtils";
 
 
 export const generateMetadata = async ({ params }) => {

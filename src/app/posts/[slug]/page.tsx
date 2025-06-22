@@ -1,27 +1,33 @@
-import {getGlobalData} from "../../../utils/global-data";
-import {getNextPostBySlug, getPostBySlug, getPostFilePaths, getPreviousPostBySlug} from "../../../utils/mdx-utils";
-import CustomLink from "../../../components/CustomLink";
-import CustomImage from "../../../components/CustomImage";
-import {MDXRemote} from 'next-mdx-remote/rsc';
-import Link from "next/link";
-import ArrowIcon from "../../../components/ArrowIcon";
-import Footer from "../../../components/Footer";
-import Layout, {GradientBackground} from "../../../components/Layout";
-import Header from "../../../components/Header";
+import { getGlobalData } from '../../../utils/global-data';
+import {
+  getNextPostBySlug,
+  getPostBySlug,
+  getPostFilePaths,
+  getPreviousPostBySlug,
+} from '../../../utils/mdx-utils';
+import CustomLink from '../../../components/CustomLink';
+import CustomImage from '../../../components/CustomImage';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import ArrowIcon from '../../../components/ArrowIcon';
+import Footer from '../../../components/Footer';
+import Layout, { GradientBackground } from '../../../components/Layout';
+import Header from '../../../components/Header';
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkGfm from "remark-gfm";
 
 
-export async function generateMetadata({params}) {
-  const {slug} = await params;
+export const generateMetadata = async ({ params }: any) => {
+  const { slug } = params;
   const globalData = getGlobalData();
-  const {mdxSource, data: frontMatter} = await getPostBySlug(slug);
+  const { mdxSource, data: frontMatter } = await getPostBySlug(slug);
   return {
     title: `${frontMatter.title} - ${globalData.name}`,
     description: frontMatter.description,
   };
-}
+};
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -35,10 +41,10 @@ const components = {
   img: CustomImage,
 };
 
-export default async function PostPage({params}) {
-  const {slug} = await params;
+const PostPage = async ({ params }: any) => {
+  const { slug } = params;
   const globalData = getGlobalData();
-  const {content, data} = await getPostBySlug(slug);
+  const { content, data } = await getPostBySlug(slug);
   const prevPost = getPreviousPostBySlug(slug);
   const nextPost = getNextPostBySlug(slug);
   return (
@@ -120,10 +126,11 @@ export default async function PostPage({params}) {
       />
     </Layout>
   );
-}
+};
 
-export async function generateStaticParams() {
-  return getPostFilePaths()
+export default PostPage;
+
+export const generateStaticParams = async (): Promise<{ slug: string }[]> =>
+  getPostFilePaths()
     .map((path) => path.replace(/\.mdx?$/, ''))
-    .map((slug) => ({slug}));
-}
+    .map((slug) => ({ slug }));

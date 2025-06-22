@@ -1,16 +1,18 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import {generateCssVariables} from '@/utils/theme-utils';
+import { useEffect, useState } from 'react';
+import { generateCssVariables } from '@/utils/theme-utils';
 
-export default function CSSVariableInjector() {
-    const [cssVars, setCssVars] = useState('');
+const CSSVariableInjector = () => {
+  const [cssVars, setCssVars] = useState('');
 
-    useEffect(() => {
-        setCssVars(generateCssVariables());
-    }, []);
+  useEffect(() => {
+    setCssVars(generateCssVariables());
+  }, []);
 
-    if (!cssVars) return null;
+  if (!cssVars) return null;
 
-    return <style>{`:root{${cssVars}}`}</style>;
-}
+  return <style>{`:root{${cssVars}}`}</style>;
+};
+
+export default CSSVariableInjector;

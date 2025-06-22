@@ -1,3 +1,8 @@
+<<<<<<< HEAD:src/app/posts/[slug]/page.tsx
+=======
+import {getGlobalData} from "../../../utils/global-data";
+import {getNextPostBySlug, getPostBySlug, getPostFilePaths, getPreviousPostBySlug} from "../../../utils/mdx-utils";
+>>>>>>> 8b2b7f0c57104afbc831fe7442a87d0abc6676ae:src/app/posts/[slug]/page.js
 import CustomLink from "../../../components/CustomLink";
 import CustomImage from "../../../components/CustomImage";
 import {MDXRemote} from 'next-mdx-remote/rsc';
@@ -9,6 +14,7 @@ import Header from "../../../components/Header";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkGfm from "remark-gfm";
+<<<<<<< HEAD:src/app/posts/[slug]/page.tsx
 import {getGlobalData} from "../../../utils/globalData";
 import {getNextPostBySlug, getPostBySlug, getPostFilePaths, getPreviousPostBySlug} from "../../../utils/mdxUtils";
 
@@ -17,11 +23,23 @@ export const generateMetadata = async ({ params }) => {
   const { slug } = await params;
   const globalData = getGlobalData();
   const { mdxSource, data: frontMatter } = await getPostBySlug(slug);
+=======
+
+
+export async function generateMetadata({params}) {
+  const {slug} = await params;
+  const globalData = getGlobalData();
+  const {mdxSource, data: frontMatter} = await getPostBySlug(slug);
+>>>>>>> 8b2b7f0c57104afbc831fe7442a87d0abc6676ae:src/app/posts/[slug]/page.js
   return {
     title: `${frontMatter.title} - ${globalData.name}`,
     description: frontMatter.description,
   };
+<<<<<<< HEAD:src/app/posts/[slug]/page.tsx
 };
+=======
+}
+>>>>>>> 8b2b7f0c57104afbc831fe7442a87d0abc6676ae:src/app/posts/[slug]/page.js
 
 // Custom components/renderers to pass to MDX.
 // Since webpack doesn't load the MDX files, they have no knowledge of how
@@ -35,16 +53,27 @@ const components = {
   img: CustomImage,
 };
 
+<<<<<<< HEAD:src/app/posts/[slug]/page.tsx
 const PostPage = async ({ params }) => {
   const { slug } = await params;
   const globalData = getGlobalData();
   const { content, data } = await getPostBySlug(slug);
+=======
+export default async function PostPage({params}) {
+  const {slug} = await params;
+  const globalData = getGlobalData();
+  const {content, data} = await getPostBySlug(slug);
+>>>>>>> 8b2b7f0c57104afbc831fe7442a87d0abc6676ae:src/app/posts/[slug]/page.js
   const prevPost = getPreviousPostBySlug(slug);
   const nextPost = getNextPostBySlug(slug);
   return (
     <Layout>
       <Header name={globalData.name}/>
+<<<<<<< HEAD:src/app/posts/[slug]/page.tsx
       <article className="px-6 md:px-0" data-sb-object-id={`data/posts/${slug}.mdx`}>
+=======
+      <article className="px-6 md:px-0" data-sb-object-id={`posts/${slug}.mdx`}>
+>>>>>>> 8b2b7f0c57104afbc831fe7442a87d0abc6676ae:src/app/posts/[slug]/page.js
         <header>
           <h1
             className="mb-12 text-3xl text-center md:text-5xl dark:text-white"
@@ -120,6 +149,7 @@ const PostPage = async ({ params }) => {
       />
     </Layout>
   );
+<<<<<<< HEAD:src/app/posts/[slug]/page.tsx
 };
 
 export default PostPage;
@@ -128,3 +158,12 @@ export const generateStaticParams = async () =>
   getPostFilePaths()
     .map((path) => path.replace(/\.mdx?$/, ''))
     .map((slug) => ({ slug }));
+=======
+}
+
+export async function generateStaticParams() {
+  return getPostFilePaths()
+    .map((path) => path.replace(/\.mdx?$/, ''))
+    .map((slug) => ({slug}));
+}
+>>>>>>> 8b2b7f0c57104afbc831fe7442a87d0abc6676ae:src/app/posts/[slug]/page.js

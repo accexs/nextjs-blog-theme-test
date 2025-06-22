@@ -21,8 +21,8 @@ export const getPostFilePaths = () => {
 
 export const sortPostsByDate = (posts) => {
   return posts.sort((a, b) => {
-    const aDate = new Date(a.data.date);
-    const bDate = new Date(b.data.date);
+    const aDate = new Date(a.data.date).getTime();
+    const bDate = new Date(b.data.date).getTime();
     return bDate - aDate;
   });
 };

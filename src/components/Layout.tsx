@@ -1,9 +1,14 @@
 'use client';
 import classNames from 'classnames';
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import styles from './Layout.module.css';
 
-export function GradientBackground({ variant, className }) {
+export interface GradientBackgroundProps {
+  variant: 'large' | 'small';
+  className?: string;
+}
+
+export const GradientBackground = ({ variant, className }: GradientBackgroundProps) => {
   const classes = classNames(
     {
       [styles.colorBackground]: variant === 'large',
@@ -13,9 +18,13 @@ export function GradientBackground({ variant, className }) {
   );
 
   return <div className={classes} />;
+};
+
+interface LayoutProps {
+  children: ReactNode;
 }
 
-export default function Layout({ children }) {
+const Layout = ({ children }: LayoutProps) => {
   const setAppTheme = () => {
     const darkMode = localStorage.getItem('theme') === 'dark';
     const lightMode = localStorage.getItem('theme') === 'light';
@@ -56,4 +65,6 @@ export default function Layout({ children }) {
       </div>
     </div>
   );
-}
+};
+
+export default Layout;

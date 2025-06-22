@@ -37,7 +37,19 @@ const LandingPage: React.FC = () => {
                 <h1 className="mb-12 text-3xl text-center lg:text-5xl">
                     {globalData.blogTitle}
                 </h1>
-                Landing page.
+                <p className="mb-4 text-xl text-center">
+                    Welcome to my corner of the web where I write about software
+                    development best practices and modern web technologies.
+                </p>
+                <p className="text-center">
+                    Follow along for tutorials on TypeScript, Next.js and tips
+                    for building robust applications.
+                </p>
+                <p className="mt-4 text-center">
+                    I&apos;ve built multi-region infrastructure and distributed systems
+                    focusing on high availability and strong consistency across
+                    global deployments.
+                </p>
             </main>
             <GradientBackground
                 variant="large"

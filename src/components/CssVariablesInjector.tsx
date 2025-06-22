@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { generateCssVariables } from '@/utils/theme-utils';
+import {generateCssVariables} from "@/utils/themeUtils";
 
 const CSSVariableInjector = () => {
   const [cssVars, setCssVars] = useState('');

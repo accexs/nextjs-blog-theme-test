@@ -1,7 +1,7 @@
 import {MDXRemote} from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import Layout, {GradientBackground} from '@/components/Layout';
+import {GradientBackground} from '@/components/GradientBackground';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import remarkGfm from 'remark-gfm';
@@ -20,7 +20,7 @@ import type {Metadata} from 'next';
 import {JSX} from 'react';
 
 type AsyncProps = {
-    params: Promise<{slug: string}>;
+    params: Promise<{ slug: string }>;
 };
 
 export const generateMetadata = async ({params}: AsyncProps): Promise<Metadata> => {
@@ -46,8 +46,7 @@ const PostPage = async ({params}: AsyncProps): Promise<JSX.Element> => {
     const nextPost = getNextPostBySlug(slug);
 
     return (
-        <Layout>
-            <Header name={globalData.name}/>
+        <div>
             <article className="px-6 md:px-0" data-sb-object-id={`posts/${slug}.mdx`}>
                 <header>
                     <h1
@@ -120,7 +119,7 @@ const PostPage = async ({params}: AsyncProps): Promise<JSX.Element> => {
                 variant="small"
                 className="absolute bottom-0 opacity-20 dark:opacity-10"
             />
-        </Layout>
+        </div>
     );
 };
 

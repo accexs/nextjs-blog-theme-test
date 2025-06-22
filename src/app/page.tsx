@@ -2,7 +2,7 @@ import Link from 'next/link';
 import {getPosts} from '@/utils/mdxUtils';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Layout, {GradientBackground} from '@/components/Layout';
+import {GradientBackground} from '@/components/GradientBackground';
 import ArrowIcon from '@/components/ArrowIcon';
 import {getGlobalData} from '@/utils/globalData';
 import React from "react";
@@ -34,8 +34,7 @@ const IndexPage: React.FC = () => {
     const globalData: GlobalData = getGlobalData();
 
     return (
-        <Layout>
-            <Header name={globalData.name}/>
+        <div>
             <main className="w-full">
                 <h1 className="mb-12 text-3xl text-center lg:text-5xl">
                     {globalData.blogTitle}
@@ -86,7 +85,7 @@ const IndexPage: React.FC = () => {
                 variant="small"
                 className="absolute bottom-0 opacity-20 dark:opacity-10"
             />
-        </Layout>
+        </div>
     );
 };
 

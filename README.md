@@ -6,7 +6,7 @@
 
 A customizable blog starter using:
 
-- [Next.js](https://github.com/vercel/next.js) v15 (Pages Router)
+- [Next.js](https://github.com/vercel/next.js) v15 (App Router)
 - [Tailwind](https://tailwindcss.com/) v4.x
 - [Netlify Visual Editor](https://docs.netlify.com/visual-editor/overview/)
 - Built-in [MDX](https://mdxjs.com/) support
@@ -72,18 +72,20 @@ Here are the variables you can edit:
 | `BLOG_FOOTER_TEXT`| the text in the footer ||
 | `BLOG_THEME` | the theme to pass to Tailwind | default |
 | `BLOG_FONT_HEADINGS` | the font-family for all HTML headings, from `h1` to `h6`| sans-serif (default), serif, monospace|
-| `BLOG_FONT_PARAGRAPHS` | the font-family for all other HTML elements | sans-serif (default), serif, monospace|
+| `BLOG_FONT_BODY` | the font-family for all other HTML elements | sans-serif (default), serif, monospace|
 
-All of the env variables can be configured through the [Wizard](https://nextjs-wizard.netlify.app/) or through setting the project's environment variables. You can do this in your Netlify dashaboard (Site settings/Build & deploy/Environment/Environment variables).
+All of the env variables can be configured through the [Wizard](https://nextjs-wizard.netlify.app/) or through setting the project's environment variables. You can do this in your Netlify dashboard (Site settings/Build & deploy/Environment/Environment variables).
 
 https://user-images.githubusercontent.com/3611928/153997545-6dcdeef0-e570-49e7-93d6-ce0d393d16c9.mp4
 
 [alt: video walkthrough of editing env vars]
 
-If setting an environment variable isn't your cup of tea, the defaults can be changed in [`utils/global-data.js`](/utils/global-data.js). You can also remove the variables and hard code blog information where these variables are used in the code base.
+If setting an environment variable isn't your cup of tea, the defaults can be changed in [`src/utils/global-data.js`](/src/utils/global-data.js). You can also remove the variables and hard code blog information where these variables are used in the code base.
 
-- `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_PARAGRAPHS` are used in [`tailwind-preset.js`](tailwind-preset.js)
-- `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`pages/index.js`](pages/index.js) & [`pages/posts/[slug].js`](pages/posts/[slug].js) through the `globalData` object.
+- `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_BODY` are used in [`src/utils/theme-utils.js`](src/utils/theme-utils.js)
+- `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`src/app/page.js`](src/app/page.js) & [`src/app/posts/[slug]/page.js`](src/app/posts/[slug]/page.js) through the `globalData` object.
+
+Values provided for `BLOG_THEME`, `BLOG_FONT_HEADINGS`, and `BLOG_FONT_BODY` are sanitized to allow only alphanumeric characters and hyphens. Make sure the values match one of the themes or fonts defined in [`themes.js`](themes.js) to ensure they are applied.
 
 ## Adding new posts
 

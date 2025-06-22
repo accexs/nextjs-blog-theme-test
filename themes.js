@@ -44,6 +44,15 @@ exports.COLOR_THEMES = {
       'gradient-4': '#FFCC81',
     },
   },
+  volcano: {
+    colors: {
+      primary: '#ff5722',
+      'gradient-1': '#ff7043',
+      'gradient-2': '#d84315',
+      'gradient-3': '#d84315',
+      'gradient-4': '#ff7043',
+    },
+  },
 };
 
 exports.FONT_THEMES = {

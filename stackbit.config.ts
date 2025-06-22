@@ -14,7 +14,7 @@ export default defineStackbitConfig({
                 {
                     name: "Post",
                     type: "page",
-                    urlPath: "/posts/{slug}",
+                    urlPath: "/data/posts/{slug}",
                     filePath: "data/posts/{slug}.mdx",
                     fields: [
                         {name: "title", type: "string", required: true, default: 'Post Title'},

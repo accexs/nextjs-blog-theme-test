@@ -6,15 +6,15 @@ import Header from '@/components/Header';
 import Layout, { GradientBackground } from '@/components/Layout';
 import ArrowIcon from '@/components/ArrowIcon';
 import { getGlobalData } from '@/utils/global-data';
-export async function generateMetadata() {
+export const generateMetadata = async () => {
   const globalData = getGlobalData();
   return {
     title: globalData.name,
     description: globalData.blogTitle,
   };
-}
+};
 
-export default function Index() {
+const Index = () => {
   const posts = getPosts();
   const globalData = getGlobalData();
   return (
@@ -72,5 +72,7 @@ export default function Index() {
       />
     </Layout>
   );
-}
+};
+
+export default Index;
 

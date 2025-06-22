@@ -13,15 +13,15 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 import remarkGfm from "remark-gfm";
 
 
-export async function generateMetadata({params}) {
-  const {slug} = await params;
+export const generateMetadata = async ({ params }) => {
+  const { slug } = await params;
   const globalData = getGlobalData();
-  const {mdxSource, data: frontMatter} = await getPostBySlug(slug);
+  const { mdxSource, data: frontMatter } = await getPostBySlug(slug);
   return {
     title: `${frontMatter.title} - ${globalData.name}`,
     description: frontMatter.description,
   };
-}
+};
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -35,10 +35,10 @@ const components = {
   img: CustomImage,
 };
 
-export default async function PostPage({params}) {
-  const {slug} = await params;
+const PostPage = async ({ params }) => {
+  const { slug } = await params;
   const globalData = getGlobalData();
-  const {content, data} = await getPostBySlug(slug);
+  const { content, data } = await getPostBySlug(slug);
   const prevPost = getPreviousPostBySlug(slug);
   const nextPost = getNextPostBySlug(slug);
   return (
@@ -120,10 +120,11 @@ export default async function PostPage({params}) {
       />
     </Layout>
   );
-}
+};
 
-export async function generateStaticParams() {
-  return getPostFilePaths()
+export default PostPage;
+
+export const generateStaticParams = async () =>
+  getPostFilePaths()
     .map((path) => path.replace(/\.mdx?$/, ''))
-    .map((slug) => ({slug}));
-}
+    .map((slug) => ({ slug }));

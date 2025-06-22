@@ -1,6 +1,6 @@
 import {COLOR_THEMES, FONT_THEMES} from '../../themes';
 
-const sanitizeEnv = (value, allowedList, fallback) => {
+const sanitizeEnv = (value: string, allowedList: string | string[], fallback: string) => {
   if (!value) return fallback;
   const sanitized = String(value).toLowerCase().replace(/[^a-z0-9-]/gi, '');
   return allowedList.includes(sanitized) ? sanitized : fallback;

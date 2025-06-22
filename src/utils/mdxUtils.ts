@@ -65,7 +65,7 @@ export const getPostBySlug = async (slug) => {
     return {mdxSource, data, postFilePath, content};
 };
 
-export const getNextPostBySlug = (slug) => {
+export const getNextPostBySlug = (slug: string) => {
     const posts = getPosts();
     const currentFileName = `${slug}.mdx`;
     const currentPost = posts.find((post) => post.filePath === currentFileName);
@@ -83,7 +83,7 @@ export const getNextPostBySlug = (slug) => {
     };
 };
 
-export const getPreviousPostBySlug = (slug) => {
+export const getPreviousPostBySlug = (slug: string) => {
     const posts = getPosts();
     const currentFileName = `${slug}.mdx`;
     const currentPost = posts.find((post) => post.filePath === currentFileName);

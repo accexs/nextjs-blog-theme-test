@@ -1,25 +1,26 @@
 import '@/styles/globals.css';
 import CSSVariableInjector from '../components/CssVariablesInjector';
-import type { ReactNode } from 'react';
+import type {ReactNode} from 'react';
+import {ThemeProvider} from "@/providers/themeProvider";
 
-export const metadata = {
-  title: 'Vulcanbyte Blog',
+const metadata = {
+    title: process.env.BLOG_NAME,
 };
 
 interface RootLayoutProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
-const RootLayout = ({ children }: RootLayoutProps) => (
-  <html lang="en" className="theme-compiled">
+const RootLayout = ({children}: RootLayoutProps) => (
+    <html lang="en" className="theme-compiled">
     <head>
-      <CSSVariableInjector />
-      <title>{metadata.title}</title>
+        <CSSVariableInjector/>
+        <title>{metadata.title}</title>
     </head>
     <body className="antialiased text-lg bg-white dark:bg-gray-900 dark:text-white leading-base">
-      {children}
+    <ThemeProvider>{children}</ThemeProvider>
     </body>
-  </html>
+    </html>
 );
 
 export default RootLayout;

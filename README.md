@@ -80,9 +80,9 @@ https://user-images.githubusercontent.com/3611928/153997545-6dcdeef0-e570-49e7-9
 
 [alt: video walkthrough of editing env vars]
 
-If setting an environment variable isn't your cup of tea, the defaults can be changed in [`src/utils/global-data.ts`](/src/utils/global-data.ts). You can also remove the variables and hard code blog information where these variables are used in the code base.
+If setting an environment variable isn't your cup of tea, the defaults can be changed in [`src/utils/globalData.ts`](/src/utils/globalData.ts). You can also remove the variables and hard code blog information where these variables are used in the code base.
 
-- `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_BODY` are used in [`src/utils/theme-utils.ts`](src/utils/theme-utils.ts)
+- `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_BODY` are used in [`src/utils/themeUtils.ts`](src/utils/themeUtils.ts)
 - `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`src/app/page.tsx`](src/app/page.tsx) & [`src/app/posts/[slug]/page.tsx`](src/app/posts/[slug]/page.tsx) through the `globalData` object.
 
 Values provided for `BLOG_THEME`, `BLOG_FONT_HEADINGS`, and `BLOG_FONT_BODY` are sanitized to allow only alphanumeric characters and hyphens. Make sure the values match one of the themes or fonts defined in [`themes.ts`](themes.ts) to ensure they are applied.

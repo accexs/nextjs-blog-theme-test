@@ -1,4 +1,4 @@
-const { COLOR_THEMES, FONT_THEMES } = require('../../themes');
+import {COLOR_THEMES, FONT_THEMES} from '../../themes';
 
 const sanitizeEnv = (value, allowedList, fallback) => {
   if (!value) return fallback;

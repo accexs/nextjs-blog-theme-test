@@ -24,12 +24,12 @@ export const generateMetadata = async ({ params }) => {
 };
 
 // Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
+// Since webpack doesn't load the MDX files, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
   a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
+  // It also works with dynamically imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
   img: CustomImage,
@@ -44,7 +44,7 @@ const PostPage = async ({ params }) => {
   return (
     <Layout>
       <Header name={globalData.name}/>
-      <article className="px-6 md:px-0" data-sb-object-id={`posts/${slug}.mdx`}>
+      <article className="px-6 md:px-0" data-sb-object-id={`data/posts/${slug}.mdx`}>
         <header>
           <h1
             className="mb-12 text-3xl text-center md:text-5xl dark:text-white"

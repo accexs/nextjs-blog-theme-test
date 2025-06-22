@@ -7,7 +7,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 
 // POSTS_PATH is useful when you want to get the path to a specific file
-export const POSTS_PATH = path.join(process.cwd(), 'posts');
+export const POSTS_PATH = path.join(process.cwd(), 'data/posts');
 
 // getPostFilePaths is the list of all mdx files inside the POSTS_PATH directory
 export const getPostFilePaths = () => {

@@ -14,7 +14,6 @@ import {
 } from '@/utils/mdxUtils';
 import CustomLink from '@/components/CustomLink';
 import CustomImage from '@/components/CustomImage';
-import Header from '@/components/Header';
 import ArrowIcon from '@/components/ArrowIcon';
 import type {Metadata} from 'next';
 import {JSX} from 'react';
@@ -110,7 +109,6 @@ const PostPage = async ({params}: AsyncProps): Promise<JSX.Element> => {
                     )}
                 </div>
             </article>
-            <Footer copyrightText={globalData.footerText}/>
             <GradientBackground
                 variant="large"
                 className="absolute -top-32 opacity-30 dark:opacity-50"

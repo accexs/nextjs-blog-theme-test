@@ -4,6 +4,7 @@ import React, {ReactNode} from 'react';
 import {ThemeProvider} from "@/providers/themeProvider";
 import Header from "@/components/Header";
 import {getGlobalData, GlobalData} from "@/utils/globalData";
+import Footer from "@/components/Footer";
 
 const metadata = {
     title: process.env.BLOG_NAME,
@@ -27,6 +28,7 @@ const RootLayout = ({children}: RootLayoutProps) => {
                 <div className="flex flex-col items-center w-full max-w-2xl mx-auto">
                     <Header name={globalData.name}/>
                     {children}
+                    <Footer copyrightText={globalData.footerText}/>
                 </div>
             </div>
         </ThemeProvider>

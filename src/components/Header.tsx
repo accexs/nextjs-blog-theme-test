@@ -5,14 +5,16 @@ interface HeaderProps {
 }
 
 const Header = ({name}: HeaderProps) => (
-    <header className="pt-20 pb-12">
+    <header className="pt-12 pb-8">
         <div
-            className="block w-12 h-12 mx-auto mb-4 rounded-full bg-conic-180 from-gradient-3 from-0% to-gradient-4 to-100%"/>
-        <p className="text-2xl text-center dark:text-white">
-            <Link href="/">{name}</Link>
-            <Link href="/posts">Blog</Link>
-            <Link href="/about">About</Link>
-        </p>
+            className="block w-12 h-12 mx-auto mb-2 rounded-full bg-conic-180 from-gradient-3 from-0% to-gradient-4 to-100%"/>
+        <nav className="flex justify-center space-x-6 text-xl dark:text-white">
+            <Link href="/" className="font-semibold">
+                {name}
+            </Link>
+            <Link href="/posts" className="hover:underline">Blog</Link>
+            <Link href="/about" className="hover:underline">About</Link>
+        </nav>
     </header>
 );
 

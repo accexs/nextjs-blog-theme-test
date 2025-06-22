@@ -81,7 +81,7 @@ export default async function PostPage({params}) {
         <div className="grid mt-12 md:grid-cols-2 lg:-mx-24">
           {prevPost && (
             <Link
-              href={`/data/posts/${prevPost.slug}`}
+              href={`/posts/${prevPost.slug}`}
               className="flex flex-col px-10 py-8 text-center transition border border-gray-800/10 bg-white/10 md:text-right first:rounded-t-lg md:first:rounded-tr-none md:first:rounded-l-lg last:rounded-r-lg last:rounded-b-lg backdrop-blur-lg dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 dark:border-white/10 last:border-t md:border-r-0 md:last:border-r md:last:rounded-r-none"
             >
               <p className="mb-4 text-gray-500 uppercase dark:text-white dark:opacity-60">
@@ -95,7 +95,7 @@ export default async function PostPage({params}) {
           )}
           {nextPost && (
             <Link
-              href={`/data/posts/${nextPost.slug}`}
+              href={`/posts/${nextPost.slug}`}
               className="flex flex-col px-10 py-8 text-center transition border border-t-0 border-b-0 border-gray-800/10 bg-white/10 md:text-left md:first:rounded-t-lg last:rounded-b-lg first:rounded-l-lg md:last:rounded-bl-none md:last:rounded-r-lg backdrop-blur-lg dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 dark:border-white/10 first:border-t first:rounded-t-lg md:border-t last:border-b"
             >
               <p className="mb-4 text-gray-500 uppercase dark:text-white dark:opacity-60">

@@ -4,7 +4,7 @@
   "author": "Ronny Arvelo",
   "scripts": {
     "dev": "next",
-    "dev:watch": "next-remote-watch ./posts",
+    "dev:watch": "next-remote-watch data/posts",
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
@@ -28,7 +28,7 @@
     "@tailwindcss/cli": "^4.1.10",
     "@tailwindcss/postcss": "^4.1.10",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "24.0.1",
+    "@types/node": "24.0.3",
     "@types/react": "19.1.8",
     "eslint": "^9.29.0",
     "eslint-config-next": "^15.3.3",
@@ -38,7 +38,7 @@
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   },
-  "overrides": {
+  "resolutions": {
     "lodash.pick": "npm:lodash@^4.17.21",
     "lodash.set": "npm:lodash@^4.17.21",
     "esbuild": "^0.25.5"

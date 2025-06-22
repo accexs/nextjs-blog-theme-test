@@ -46,15 +46,11 @@ exports.COLOR_THEMES = {
   },
   volcano: {
     colors: {
-      'volcano-light': '#ff7043',
-      'volcano-dark': '#d84315',
-      lava: '#ff5722',
-      'background-light': '#fdfdfc',
-      'background-dark': '#0f0f0f',
-      'text-light': '#fefefe',
-      'text-dark': '#121212',
-      charcoal: '#212121',
-      gray: '#757575',
+      primary: '#ff5722',
+      'gradient-1': '#ff7043',
+      'gradient-2': '#d84315',
+      'gradient-3': '#d84315',
+      'gradient-4': '#ff7043',
     },
   },
 };

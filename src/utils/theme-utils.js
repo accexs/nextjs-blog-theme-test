@@ -7,7 +7,7 @@ function sanitizeEnv(value, allowedList, fallback) {
 }
 
 const THEME = sanitizeEnv(
-  process.env.BLOG_THEME,
+  process.env.NEXT_PUBLIC_BLOG_THEME,
   Object.keys(COLOR_THEMES),
   'default',
 );

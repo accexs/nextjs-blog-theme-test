@@ -33,7 +33,7 @@ export default function Index() {
             >
               <Link
                 as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
-                href={`/posts/[slug]`}
+                href={`/data/posts/[slug]`}
                 className="block px-6 py-6 lg:py-10 lg:px-16 focus:outline-hidden focus:ring-4 focus:ring-primary/50"
               >
                 {post.data.date && (

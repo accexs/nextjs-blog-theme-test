@@ -1,11 +1,16 @@
 import '@/styles/globals.css';
-import CSSVariableInjector from "../components/CssVariablesInjector";
+import CSSVariableInjector from '../components/CssVariablesInjector';
+import type { ReactNode } from 'react';
 
 export const metadata = {
   title: 'Vulcanbyte Blog',
 };
 
-const RootLayout = ({ children }) => (
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="en" className="theme-compiled">
     <head>
       <CSSVariableInjector />

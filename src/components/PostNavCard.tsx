@@ -14,10 +14,10 @@ const PostNavCard = ({ slug, title, direction }: PostNavCardProps) => {
     'flex flex-col px-10 py-8 text-center transition border border-gray-800/10 bg-white/10 backdrop-blur-lg dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 dark:border-white/10';
 
   const prevClasses =
-    'md:text-right first:rounded-t-lg md:first:rounded-tr-none md:first:rounded-l-lg last:rounded-r-lg last:rounded-b-lg last:border-t md:border-r-0 md:last:border-r md:last:rounded-r-none';
+    'md:col-start-1 md:text-right first:rounded-t-lg md:first:rounded-tr-none md:first:rounded-l-lg last:rounded-r-lg last:rounded-b-lg last:border-t md:border-r-0 md:last:border-r md:last:rounded-r-none';
 
   const nextClasses =
-    'border-t-0 border-b-0 md:text-left md:first:rounded-t-lg last:rounded-b-lg first:rounded-l-lg md:last:rounded-bl-none md:last:rounded-r-lg first:border-t md:border-t last:border-b';
+    'md:col-start-2 border-t-0 border-b-0 md:text-left md:first:rounded-t-lg last:rounded-b-lg first:rounded-l-lg md:last:rounded-bl-none md:last:rounded-r-lg first:border-t md:border-t last:border-b';
 
   return (
     <Link

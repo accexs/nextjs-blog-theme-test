@@ -6,7 +6,7 @@
 
 A customizable blog starter using:
 
-- [Next.js](https://github.com/vercel/next.js) v15 (App Router)
+- [Next.js](https://github.com/vercel/next.js) v15 (Pages Router)
 - [Tailwind](https://tailwindcss.com/) v4.x
 - [Netlify Visual Editor](https://docs.netlify.com/visual-editor/overview/)
 - Built-in [MDX](https://mdxjs.com/) support
@@ -74,18 +74,16 @@ Here are the variables you can edit:
 | `BLOG_FONT_HEADINGS` | the font-family for all HTML headings, from `h1` to `h6`| sans-serif (default), serif, monospace|
 | `BLOG_FONT_BODY` | the font-family for all other HTML elements | sans-serif (default), serif, monospace|
 
-All of the env variables can be configured through the [Wizard](https://nextjs-wizard.netlify.app/) or through setting the project's environment variables. You can do this in your Netlify dashboard (Site settings/Build & deploy/Environment/Environment variables).
+All of the env variables can be configured through the [Wizard](https://nextjs-wizard.netlify.app/) or through setting the project's environment variables. You can do this in your Netlify dashaboard (Site settings/Build & deploy/Environment/Environment variables).
 
 https://user-images.githubusercontent.com/3611928/153997545-6dcdeef0-e570-49e7-93d6-ce0d393d16c9.mp4
 
 [alt: video walkthrough of editing env vars]
 
-If setting an environment variable isn't your cup of tea, the defaults can be changed in [`src/utils/globalData.ts`](/src/utils/globalData.ts). You can also remove the variables and hard code blog information where these variables are used in the code base.
+If setting an environment variable isn't your cup of tea, the defaults can be changed in [`utils/global-data.js`](/utils/global-data.js). You can also remove the variables and hard code blog information where these variables are used in the code base.
 
-- `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_BODY` are used in [`src/utils/themeUtils.ts`](src/utils/themeUtils.ts)
-- `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`src/app/page.tsx`](src/app/page.tsx) & [`src/app/posts/[slug]/page.tsx`](src/app/posts/[slug]/page.tsx) through the `globalData` object.
-
-Values provided for `BLOG_THEME`, `BLOG_FONT_HEADINGS`, and `BLOG_FONT_BODY` are sanitized to allow only alphanumeric characters and hyphens. Make sure the values match one of the themes or fonts defined in [`themes.ts`](themes.ts) to ensure they are applied.
+- `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_BODY` are used in [`utils/theme-utils.js`](utils/theme-utils.js)
+- `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`pages/index.js`](pages/index.js) & [`pages/posts/[slug].js`](pages/posts/[slug].js) through the `globalData` object.
 
 ## Adding new posts
 

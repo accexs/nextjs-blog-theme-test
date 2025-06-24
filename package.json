@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next",
     "dev:watch": "next-remote-watch data/posts",
+    "visual-editor": "stackbit dev",
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
     "lint": "next lint",
-    "visual-editor": "stackbit dev"
+    "test": "jest"
   },
   "dependencies": {
     "classnames": "^2.5.1",
@@ -34,7 +35,7 @@
     "eslint": "^9.29.0",
     "eslint-config-next": "^15.3.3",
     "eslint-config-prettier": "^10.1.5",
-    "next-remote-watch": "^2.0.0",
+    "jest": "^30.0.1",
     "postcss": "^8.5.5",
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"

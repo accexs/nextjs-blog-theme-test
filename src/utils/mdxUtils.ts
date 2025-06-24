@@ -2,12 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
-import rehypePrism from '@mapbox/rehype-prism';
 import remarkGfm from 'remark-gfm';
+import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 
 // POSTS_PATH is useful when you want to get the path to a specific file
-export const POSTS_PATH = path.join(process.cwd(), 'posts');
+export const POSTS_PATH = path.join(process.cwd(), 'data/posts');
 
 // getPostFilePaths is the list of all mdx files inside the POSTS_PATH directory
 export const getPostFilePaths = () => {
@@ -21,8 +21,8 @@ export const getPostFilePaths = () => {
 
 export const sortPostsByDate = (posts) => {
   return posts.sort((a, b) => {
-    const aDate = new Date(a.data.date);
-    const bDate = new Date(b.data.date);
+    const aDate = new Date(a.data.date).getTime();
+    const bDate = new Date(b.data.date).getTime();
     return bDate - aDate;
   });
 };
@@ -54,22 +54,31 @@ export const getPostBySlug = async (slug) => {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypePrism, rehypeUnwrapImages],
+      rehypePlugins: [
+        [
+          rehypePrettyCode,
+          {
+            theme: 'github-dark', // or 'nord', 'dracula', etc.
+            keepBackground: false, // optional
+          },
+        ],
+        rehypeUnwrapImages,
+      ],
     },
     scope: data,
   });
 
-  return { mdxSource, data, postFilePath };
+  return { mdxSource, data, postFilePath, content };
 };
 
-export const getNextPostBySlug = (slug) => {
+export const getNextPostBySlug = (slug: string) => {
   const posts = getPosts();
   const currentFileName = `${slug}.mdx`;
   const currentPost = posts.find((post) => post.filePath === currentFileName);
   const currentPostIndex = posts.indexOf(currentPost);
 
-  const post = posts[currentPostIndex - 1];
-  // no prev post found
+  const post = posts[currentPostIndex + 1];
+  // no next post found
   if (!post) return null;
 
   const nextPostSlug = post?.filePath.replace(/\.mdx?$/, '');
@@ -80,13 +89,13 @@ export const getNextPostBySlug = (slug) => {
   };
 };
 
-export const getPreviousPostBySlug = (slug) => {
+export const getPreviousPostBySlug = (slug: string) => {
   const posts = getPosts();
   const currentFileName = `${slug}.mdx`;
   const currentPost = posts.find((post) => post.filePath === currentFileName);
   const currentPostIndex = posts.indexOf(currentPost);
 
-  const post = posts[currentPostIndex + 1];
+  const post = posts[currentPostIndex - 1];
   // no prev post found
   if (!post) return null;
 

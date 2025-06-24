@@ -1,8 +1,9 @@
 ---
 type: Post
 title: Test article new title
-description: This is a description for my test artic
+description: This is a description for my test article
 date: '2025-06-14'
+author: data/authors/test.json
 ---
 # Some title for this
 
@@ -29,3 +30,20 @@ And we can check some bullets here:
 *   two of this
 
 *   and the last one
+
+Lets add a `small inline code`
+
+Now lets test a code block for some content, updated this comment twice:
+
+```
+func NewMatchingWeights() MatchingWeights {
+    return MatchingWeights{
+       Email:     4.0,
+       Address:   3.0,
+       ZipCode:   2.0,
+       FirstName: 1.5,
+       LastName:  1.5,
+    }
+}
+```
+

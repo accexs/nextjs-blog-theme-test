@@ -5,6 +5,7 @@ import {ThemeProvider} from "@/providers/themeProvider";
 import Header from "@/components/Header";
 import {getGlobalData, GlobalData} from "@/utils/globalData";
 import Footer from "@/components/Footer";
+import {Navbar} from "@/components/Navbar";
 
 const metadata = {
     title: process.env.BLOG_NAME,
@@ -27,6 +28,7 @@ const RootLayout = ({children}: RootLayoutProps) => {
             <div className="relative pb-24 overflow-hidden">
                 <div className="flex flex-col items-center w-full max-w-2xl mx-auto">
                     <Header name={globalData.name}/>
+                    <Navbar/>
                     {children}
                     <Footer copyrightText={globalData.footerText}/>
                 </div>

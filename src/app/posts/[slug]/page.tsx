@@ -46,7 +46,7 @@ const PostPage = async ({ params }: AsyncProps): Promise<JSX.Element> => {
 
   return (
     <div>
-      <article className="px-6 md:px-0" data-sb-object-id={`posts/${slug}.mdx`}>
+      <article className="px-6 md:px-0" data-sb-object-id={`data/posts/${slug}.mdx`}>
         <header>
           <h1
             className="mb-12 text-3xl text-center md:text-5xl dark:text-white"

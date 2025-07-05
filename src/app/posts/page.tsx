@@ -42,7 +42,7 @@ const PostsPage: React.FC = () => {
                         <li
                             key={post.filePath}
                             className="transition border border-b-0 bg-white/10 border-gray-800/10 md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 dark:border-white/10 last:border-b"
-                            data-sb-object-id={`posts/${post.filePath}`}
+                            data-sb-object-id={`data/posts/${post.filePath}`}
                         >
                             <Link
                                 as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
